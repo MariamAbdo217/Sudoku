@@ -1,14 +1,13 @@
 cmake_minimum_required(VERSION 4.0)
-project(Sudoku)
+project(Sudoko_Dancing_Links)
+
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Sudoku main.cpp
-        Sudoku.cpp
-        Sudoku.h
-        NaiveSolver.cpp
-        NaiveSolver.h
-        ForwardCheckingSolver.cpp
-        ForwardCheckingSolver.h
-        ConstraintPropagationSolver.cpp
-        ConstraintPropagationSolver.h)
+# Add Code_library subdirectory first
+add_subdirectory(Code_library)
+
+# Main executable (compression/decompression program)
+add_executable(Sudoko_Dancing_Links main.cpp)
+target_link_libraries(Sudoko_Dancing_Links PRIVATE Code_library)
